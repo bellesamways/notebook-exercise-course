@@ -1159,3 +1159,589 @@ Completed 200 OK in 96ms (Views: 94.4ms | ActiveRecord: 0.2ms)
 
 
 Started GET "/assets/down-arrow.png" for 127.0.0.1 at 2020-01-14 21:54:45 -0300
+  [1m[36m (19.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (10.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateKinds (20200111021506)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021506"]]
+  [1m[35m (11.1ms)[0m  commit transaction
+Migrating to CreateContacts (20200111021733)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "kind_id" integer, "rmk" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_contacts_on_kind_id" ON "contacts" ("kind_id")[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021733"]]
+  [1m[36m (11.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAddresses (20200111021832)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "state" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_addresses_on_contact_id" ON "addresses" ("contact_id")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021832"]]
+  [1m[35m (11.0ms)[0m  commit transaction
+Migrating to CreatePhones (20200111021906)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "phones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "phone" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_phones_on_contact_id" ON "phones" ("contact_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021906"]]
+  [1m[36m (14.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (12.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (14.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateKinds (20200111021506)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021506"]]
+  [1m[35m (16.4ms)[0m  commit transaction
+Migrating to CreateContacts (20200111021733)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "kind_id" integer, "rmk" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_contacts_on_kind_id" ON "contacts" ("kind_id")[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021733"]]
+  [1m[36m (14.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAddresses (20200111021832)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "state" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_addresses_on_contact_id" ON "addresses" ("contact_id")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021832"]]
+  [1m[35m (11.3ms)[0m  commit transaction
+Migrating to CreatePhones (20200111021906)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "phones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "phone" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_phones_on_contact_id" ON "phones" ("contact_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021906"]]
+  [1m[36m (14.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "Amigo"], ["created_at", "2020-01-17 19:59:21.947857"], ["updated_at", "2020-01-17 19:59:21.947857"]]
+  [1m[36m (13.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["description", "Contato"], ["created_at", "2020-01-17 19:59:21.966860"], ["updated_at", "2020-01-17 19:59:21.966860"]]
+  [1m[35m (10.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "Comercial"], ["created_at", "2020-01-17 19:59:21.980693"], ["updated_at", "2020-01-17 19:59:21.980693"]]
+  [1m[36m (11.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Carey Pagac"], ["email", "angele@walker.co"], ["kind_id", 1], ["rmk", "[\"possimus\", \"libero\"]"], ["created_at", "2020-01-17 19:59:22.746725"], ["updated_at", "2020-01-17 19:59:22.746725"]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Blake Pouros MD"], ["email", "bruno@olson.info"], ["kind_id", 3], ["rmk", "[\"ut\", \"autem\"]"], ["created_at", "2020-01-17 19:59:22.758792"], ["updated_at", "2020-01-17 19:59:22.758792"]]
+  [1m[36m (9.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.3ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Trudy Stark DDS"], ["email", "teofila@huels.org"], ["kind_id", 3], ["rmk", "[\"enim\", \"rerum\"]"], ["created_at", "2020-01-17 19:59:22.772922"], ["updated_at", "2020-01-17 19:59:22.772922"]]
+  [1m[36m (8.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Mr. Demetrius McGlynn"], ["email", "naomi_dibbert@emmerich.co"], ["kind_id", 2], ["rmk", "[\"rerum\", \"qui\"]"], ["created_at", "2020-01-17 19:59:22.784896"], ["updated_at", "2020-01-17 19:59:22.784896"]]
+  [1m[36m (12.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Elza Brakus"], ["email", "dina.herman@runte.info"], ["kind_id", 1], ["rmk", "[\"sunt\", \"perspiciatis\"]"], ["created_at", "2020-01-17 19:59:22.801036"], ["updated_at", "2020-01-17 19:59:22.801036"]]
+  [1m[36m (14.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Man Rippin Jr."], ["email", "beryl@langworth.net"], ["kind_id", 2], ["rmk", "[\"architecto\", \"non\"]"], ["created_at", "2020-01-17 19:59:22.820805"], ["updated_at", "2020-01-17 19:59:22.820805"]]
+  [1m[36m (11.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.3ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Michelle Runolfsson DDS"], ["email", "jonell_spencer@stoltenberg.info"], ["kind_id", 1], ["rmk", "[\"eius\", \"ipsa\"]"], ["created_at", "2020-01-17 19:59:22.840142"], ["updated_at", "2020-01-17 19:59:22.840142"]]
+  [1m[36m (10.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Josphine Bauch"], ["email", "alphonse.cole@hickle.biz"], ["kind_id", 1], ["rmk", "[\"aut\", \"placeat\"]"], ["created_at", "2020-01-17 19:59:22.860231"], ["updated_at", "2020-01-17 19:59:22.860231"]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Jon Connelly"], ["email", "regenia.quigley@breitenberg.net"], ["kind_id", 2], ["rmk", "[\"sapiente\", \"numquam\"]"], ["created_at", "2020-01-17 19:59:22.876591"], ["updated_at", "2020-01-17 19:59:22.876591"]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.4ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.7ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Abraham Beatty"], ["email", "art@torpstracke.net"], ["kind_id", 2], ["rmk", "[\"incidunt\", \"minima\"]"], ["created_at", "2020-01-17 19:59:22.893406"], ["updated_at", "2020-01-17 19:59:22.893406"]]
+  [1m[36m (14.6ms)[0m  [1mcommit transaction[0m
+  [1m[36m (9.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (9.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateKinds (20200111021506)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021506"]]
+  [1m[35m (8.0ms)[0m  commit transaction
+Migrating to CreateContacts (20200111021733)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "kind_id" integer, "rmk" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_contacts_on_kind_id" ON "contacts" ("kind_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021733"]]
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAddresses (20200111021832)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "state" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_addresses_on_contact_id" ON "addresses" ("contact_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021832"]]
+  [1m[35m (6.1ms)[0m  commit transaction
+Migrating to CreatePhones (20200111021906)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "phones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "phone" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_phones_on_contact_id" ON "phones" ("contact_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021906"]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "Amigo"], ["created_at", "2020-01-17 20:36:33.501723"], ["updated_at", "2020-01-17 20:36:33.501723"]]
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["description", "Contato"], ["created_at", "2020-01-17 20:36:33.509896"], ["updated_at", "2020-01-17 20:36:33.509896"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "Comercial"], ["created_at", "2020-01-17 20:36:33.517118"], ["updated_at", "2020-01-17 20:36:33.517118"]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Ms. Jude Bahringer"], ["email", "erik.erdman@cummerata.net"], ["kind_id", 3], ["rmk", "[\"voluptatem\", \"quisquam\"]"], ["created_at", "2020-01-17 20:36:34.075618"], ["updated_at", "2020-01-17 20:36:34.075618"]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Chung Spinka I"], ["email", "ivelie@funk.com"], ["kind_id", 3], ["rmk", "[\"officia\", \"numquam\"]"], ["created_at", "2020-01-17 20:36:34.087532"], ["updated_at", "2020-01-17 20:36:34.087532"]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Carletta Gerlach"], ["email", "hyon_borer@brown.info"], ["kind_id", 2], ["rmk", "[\"quia\", \"iste\"]"], ["created_at", "2020-01-17 20:36:34.094268"], ["updated_at", "2020-01-17 20:36:34.094268"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Annabelle Muller"], ["email", "lamar_ankunding@torp.co"], ["kind_id", 1], ["rmk", "[\"ut\", \"placeat\"]"], ["created_at", "2020-01-17 20:36:34.103882"], ["updated_at", "2020-01-17 20:36:34.103882"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.3ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Shaun Kub DVM"], ["email", "blanche@schneider.biz"], ["kind_id", 3], ["rmk", "[\"reprehenderit\", \"perspiciatis\"]"], ["created_at", "2020-01-17 20:36:34.112441"], ["updated_at", "2020-01-17 20:36:34.112441"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Simon Weber"], ["email", "francisco_walter@wisoky.biz"], ["kind_id", 2], ["rmk", "[\"et\", \"sequi\"]"], ["created_at", "2020-01-17 20:36:34.121024"], ["updated_at", "2020-01-17 20:36:34.121024"]]
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Ms. Jennette Doyle"], ["email", "danial@pagacweimann.org"], ["kind_id", 2], ["rmk", "[\"praesentium\", \"quaerat\"]"], ["created_at", "2020-01-17 20:36:34.130804"], ["updated_at", "2020-01-17 20:36:34.130804"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Arvilla Gulgowski"], ["email", "kenia.aufderhar@goyette.com"], ["kind_id", 1], ["rmk", "[\"aut\", \"qui\"]"], ["created_at", "2020-01-17 20:36:34.138538"], ["updated_at", "2020-01-17 20:36:34.138538"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Minh Carter"], ["email", "roxana@langoshkuvalis.net"], ["kind_id", 3], ["rmk", "[\"quia\", \"aut\"]"], ["created_at", "2020-01-17 20:36:34.145674"], ["updated_at", "2020-01-17 20:36:34.145674"]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Jeffrey Leuschke"], ["email", "eugene.beatty@zboncakhermiston.biz"], ["kind_id", 3], ["rmk", "[\"doloremque\", \"voluptatem\"]"], ["created_at", "2020-01-17 20:36:34.156362"], ["updated_at", "2020-01-17 20:36:34.156362"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mContact Load (0.1ms)[0m  SELECT "contacts".* FROM "contacts"
+  [1m[36m (10.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (7.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateKinds (20200111021506)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021506"]]
+  [1m[35m (7.5ms)[0m  commit transaction
+Migrating to CreateContacts (20200111021733)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "kind_id" integer, "rmk" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_contacts_on_kind_id" ON "contacts" ("kind_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021733"]]
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAddresses (20200111021832)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "state" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_addresses_on_contact_id" ON "addresses" ("contact_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021832"]]
+  [1m[35m (6.6ms)[0m  commit transaction
+Migrating to CreatePhones (20200111021906)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "phones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "phone" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_phones_on_contact_id" ON "phones" ("contact_id")[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021906"]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "Amigo"], ["created_at", "2020-01-17 20:36:53.771052"], ["updated_at", "2020-01-17 20:36:53.771052"]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["description", "Contato"], ["created_at", "2020-01-17 20:36:53.778034"], ["updated_at", "2020-01-17 20:36:53.778034"]]
+  [1m[35m (6.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "Comercial"], ["created_at", "2020-01-17 20:36:53.785822"], ["updated_at", "2020-01-17 20:36:53.785822"]]
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Ilene Ritchie PhD"], ["email", "shenna@mayer.info"], ["kind_id", 2], ["rmk", "[\"nisi\", \"aut\"]"], ["created_at", "2020-01-17 20:36:54.402296"], ["updated_at", "2020-01-17 20:36:54.402296"]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Elmo Pfannerstill"], ["email", "seema@borer.info"], ["kind_id", 1], ["rmk", "[\"voluptatem\", \"magni\"]"], ["created_at", "2020-01-17 20:36:54.412187"], ["updated_at", "2020-01-17 20:36:54.412187"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Tobias Howe"], ["email", "guy_kaulke@treutel.co"], ["kind_id", 3], ["rmk", "[\"ratione\", \"exercitationem\"]"], ["created_at", "2020-01-17 20:36:54.419340"], ["updated_at", "2020-01-17 20:36:54.419340"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.3ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Agatha Herman"], ["email", "elijah@pollichwitting.co"], ["kind_id", 3], ["rmk", "[\"cupiditate\", \"est\"]"], ["created_at", "2020-01-17 20:36:54.431815"], ["updated_at", "2020-01-17 20:36:54.431815"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.3ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Pansy Rowe V"], ["email", "robbie.schinner@bednar.net"], ["kind_id", 2], ["rmk", "[\"qui\", \"itaque\"]"], ["created_at", "2020-01-17 20:36:54.445876"], ["updated_at", "2020-01-17 20:36:54.445876"]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Lacy Bauch"], ["email", "hoyt.wiza@hilpertmoriette.co"], ["kind_id", 1], ["rmk", "[\"officia\", \"necessitatibus\"]"], ["created_at", "2020-01-17 20:36:54.455435"], ["updated_at", "2020-01-17 20:36:54.455435"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Jeannetta Ferry"], ["email", "rebecca.kutch@muller.net"], ["kind_id", 3], ["rmk", "[\"reiciendis\", \"unde\"]"], ["created_at", "2020-01-17 20:36:54.463390"], ["updated_at", "2020-01-17 20:36:54.463390"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Dalila Reichel"], ["email", "thersa_donnelly@hamill.info"], ["kind_id", 2], ["rmk", "[\"quo\", \"sit\"]"], ["created_at", "2020-01-17 20:36:54.471698"], ["updated_at", "2020-01-17 20:36:54.471698"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Damien Murphy Jr."], ["email", "hildegarde@osinski.io"], ["kind_id", 3], ["rmk", "[\"cupiditate\", \"eum\"]"], ["created_at", "2020-01-17 20:36:54.479532"], ["updated_at", "2020-01-17 20:36:54.479532"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Roosevelt Collins"], ["email", "tanner_waelchi@bergebahringer.biz"], ["kind_id", 2], ["rmk", "[\"placeat\", \"facere\"]"], ["created_at", "2020-01-17 20:36:54.487477"], ["updated_at", "2020-01-17 20:36:54.487477"]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mContact Load (0.1ms)[0m  SELECT "contacts".* FROM "contacts"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "262 Boyer Landing"], ["city", "Lake Conchaton"], ["state", "Kansas"], ["contact_id", 1], ["created_at", "2020-01-17 20:36:54.499599"], ["updated_at", "2020-01-17 20:36:54.499599"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "737 Tora Crest"], ["city", "Okunevaton"], ["state", "Alaska"], ["contact_id", 2], ["created_at", "2020-01-17 20:36:54.507103"], ["updated_at", "2020-01-17 20:36:54.507103"]]
+  [1m[35m (6.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "483 Mitchell Inlet"], ["city", "North Calvin"], ["state", "Wyoming"], ["contact_id", 3], ["created_at", "2020-01-17 20:36:54.515607"], ["updated_at", "2020-01-17 20:36:54.515607"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "6223 Borer Run"], ["city", "New Byron"], ["state", "New York"], ["contact_id", 4], ["created_at", "2020-01-17 20:36:54.522728"], ["updated_at", "2020-01-17 20:36:54.522728"]]
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "4280 Kirlin Courts"], ["city", "New Kirkburgh"], ["state", "Wyoming"], ["contact_id", 5], ["created_at", "2020-01-17 20:36:54.529933"], ["updated_at", "2020-01-17 20:36:54.529933"]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "892 Howell Manor"], ["city", "New Krysten"], ["state", "Indiana"], ["contact_id", 6], ["created_at", "2020-01-17 20:36:54.539015"], ["updated_at", "2020-01-17 20:36:54.539015"]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "75860 Vince Mount"], ["city", "Sauermouth"], ["state", "Kansas"], ["contact_id", 7], ["created_at", "2020-01-17 20:36:54.546983"], ["updated_at", "2020-01-17 20:36:54.546983"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "2827 Moore Corners"], ["city", "East Alysa"], ["state", "Utah"], ["contact_id", 8], ["created_at", "2020-01-17 20:36:54.555609"], ["updated_at", "2020-01-17 20:36:54.555609"]]
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "5879 Lashawn Point"], ["city", "Port Princessburgh"], ["state", "Montana"], ["contact_id", 9], ["created_at", "2020-01-17 20:36:54.562331"], ["updated_at", "2020-01-17 20:36:54.562331"]]
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "53867 Schowalter Mount"], ["city", "East Maria"], ["state", "New Hampshire"], ["contact_id", 10], ["created_at", "2020-01-17 20:36:54.571775"], ["updated_at", "2020-01-17 20:36:54.571775"]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36mContact Load (0.1ms)[0m  [1mSELECT "contacts".* FROM "contacts"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "702-032-2439 x6707"], ["contact_id", 1], ["created_at", "2020-01-17 20:36:54.581466"], ["updated_at", "2020-01-17 20:36:54.581466"]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "994-503-8999 x68357"], ["contact_id", 2], ["created_at", "2020-01-17 20:36:54.590313"], ["updated_at", "2020-01-17 20:36:54.590313"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "1-544-411-3162"], ["contact_id", 3], ["created_at", "2020-01-17 20:36:54.597987"], ["updated_at", "2020-01-17 20:36:54.597987"]]
+  [1m[35m (7.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "274.267.0603"], ["contact_id", 4], ["created_at", "2020-01-17 20:36:54.607168"], ["updated_at", "2020-01-17 20:36:54.607168"]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "1-108-059-0489"], ["contact_id", 5], ["created_at", "2020-01-17 20:36:54.614936"], ["updated_at", "2020-01-17 20:36:54.614936"]]
+  [1m[35m (5.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "758-419-5067 x7393"], ["contact_id", 6], ["created_at", "2020-01-17 20:36:54.622103"], ["updated_at", "2020-01-17 20:36:54.622103"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "485.208.0388 x395"], ["contact_id", 7], ["created_at", "2020-01-17 20:36:54.629586"], ["updated_at", "2020-01-17 20:36:54.629586"]]
+  [1m[35m (7.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "(472) 745-5914"], ["contact_id", 8], ["created_at", "2020-01-17 20:36:54.638182"], ["updated_at", "2020-01-17 20:36:54.638182"]]
+  [1m[36m (8.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "(332) 361-3555 x892"], ["contact_id", 9], ["created_at", "2020-01-17 20:36:54.648126"], ["updated_at", "2020-01-17 20:36:54.648126"]]
+  [1m[35m (5.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "(640) 860-8651 x484"], ["contact_id", 10], ["created_at", "2020-01-17 20:36:54.656726"], ["updated_at", "2020-01-17 20:36:54.656726"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[36m (9.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (6.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateKinds (20200111021506)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "kinds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021506"]]
+  [1m[35m (7.9ms)[0m  commit transaction
+Migrating to CreateContacts (20200111021733)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "kind_id" integer, "rmk" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_contacts_on_kind_id" ON "contacts" ("kind_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021733"]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAddresses (20200111021832)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "street" varchar, "city" varchar, "state" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_addresses_on_contact_id" ON "addresses" ("contact_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200111021832"]]
+  [1m[35m (6.5ms)[0m  commit transaction
+Migrating to CreatePhones (20200111021906)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "phones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "phone" varchar, "contact_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_phones_on_contact_id" ON "phones" ("contact_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20200111021906"]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_contact_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_contacts_on_kind_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_phones_on_contact_id' AND type='index'
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "Amigo"], ["created_at", "2020-01-17 20:37:15.743142"], ["updated_at", "2020-01-17 20:37:15.743142"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["description", "Contato"], ["created_at", "2020-01-17 20:37:15.750721"], ["updated_at", "2020-01-17 20:37:15.750721"]]
+  [1m[35m (5.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "kinds" ("description", "created_at", "updated_at") VALUES (?, ?, ?)  [["description", "Comercial"], ["created_at", "2020-01-17 20:37:15.757883"], ["updated_at", "2020-01-17 20:37:15.757883"]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Tonisha McKenzie"], ["email", "lionel@cronin.co"], ["kind_id", 2], ["rmk", "[\"impedit\", \"aut\"]"], ["created_at", "2020-01-17 20:37:16.635198"], ["updated_at", "2020-01-17 20:37:16.635198"]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Devona Moore DDS"], ["email", "shonta@konopelskistrosin.org"], ["kind_id", 3], ["rmk", "[\"explicabo\", \"quia\"]"], ["created_at", "2020-01-17 20:37:16.647019"], ["updated_at", "2020-01-17 20:37:16.647019"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Charles Heathcote"], ["email", "harrison@nolandubuque.co"], ["kind_id", 2], ["rmk", "[\"deleniti\", \"et\"]"], ["created_at", "2020-01-17 20:37:16.655712"], ["updated_at", "2020-01-17 20:37:16.655712"]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Walker Zboncak V"], ["email", "claud_stanton@walsh.biz"], ["kind_id", 1], ["rmk", "[\"itaque\", \"et\"]"], ["created_at", "2020-01-17 20:37:16.666420"], ["updated_at", "2020-01-17 20:37:16.666420"]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.1ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Cassey Barton"], ["email", "prince.hammes@carroll.com"], ["kind_id", 2], ["rmk", "[\"nobis\", \"nulla\"]"], ["created_at", "2020-01-17 20:37:16.674209"], ["updated_at", "2020-01-17 20:37:16.674209"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.3ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Bob Zieme"], ["email", "esmeralda.shanahan@johnson.net"], ["kind_id", 1], ["rmk", "[\"est\", \"fugit\"]"], ["created_at", "2020-01-17 20:37:16.685336"], ["updated_at", "2020-01-17 20:37:16.685336"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Maria Shields PhD"], ["email", "valentin.rohan@lynch.name"], ["kind_id", 3], ["rmk", "[\"laudantium\", \"reprehenderit\"]"], ["created_at", "2020-01-17 20:37:16.695626"], ["updated_at", "2020-01-17 20:37:16.695626"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Lawana Brekke"], ["email", "kirby_glover@metz.io"], ["kind_id", 2], ["rmk", "[\"minima\", \"excepturi\"]"], ["created_at", "2020-01-17 20:37:16.705968"], ["updated_at", "2020-01-17 20:37:16.705968"]]
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Enola Gusikowski"], ["email", "ginger@reynolds.info"], ["kind_id", 3], ["rmk", "[\"atque\", \"perferendis\"]"], ["created_at", "2020-01-17 20:37:16.718623"], ["updated_at", "2020-01-17 20:37:16.718623"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mKind Load (0.2ms)[0m  SELECT "kinds".* FROM "kinds"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "contacts" ("name", "email", "kind_id", "rmk", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Micheal Davis PhD"], ["email", "tyler@fritsch.info"], ["kind_id", 2], ["rmk", "[\"sint\", \"doloremque\"]"], ["created_at", "2020-01-17 20:37:16.730335"], ["updated_at", "2020-01-17 20:37:16.730335"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mContact Load (1.2ms)[0m  SELECT "contacts".* FROM "contacts"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "352 Yundt Terrace"], ["city", "Kuhnville"], ["state", "Oklahoma"], ["contact_id", 1], ["created_at", "2020-01-17 20:37:16.757895"], ["updated_at", "2020-01-17 20:37:16.757895"]]
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "473 Dickens Bypass"], ["city", "Fritschborough"], ["state", "New Hampshire"], ["contact_id", 2], ["created_at", "2020-01-17 20:37:16.772166"], ["updated_at", "2020-01-17 20:37:16.772166"]]
+  [1m[35m (13.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "81765 Owen Burg"], ["city", "Tobyport"], ["state", "Pennsylvania"], ["contact_id", 3], ["created_at", "2020-01-17 20:37:16.791584"], ["updated_at", "2020-01-17 20:37:16.791584"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "65789 Kautzer Villages"], ["city", "South Romeomouth"], ["state", "Montana"], ["contact_id", 4], ["created_at", "2020-01-17 20:37:16.801850"], ["updated_at", "2020-01-17 20:37:16.801850"]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "235 Efren Prairie"], ["city", "South Nathanaelland"], ["state", "Arizona"], ["contact_id", 5], ["created_at", "2020-01-17 20:37:16.818000"], ["updated_at", "2020-01-17 20:37:16.818000"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "4648 Cole Extension"], ["city", "West Susanville"], ["state", "Arizona"], ["contact_id", 6], ["created_at", "2020-01-17 20:37:16.831162"], ["updated_at", "2020-01-17 20:37:16.831162"]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "228 Sherley Oval"], ["city", "Breitenbergland"], ["state", "Rhode Island"], ["contact_id", 7], ["created_at", "2020-01-17 20:37:16.846467"], ["updated_at", "2020-01-17 20:37:16.846467"]]
+  [1m[36m (11.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "9906 Noble Pike"], ["city", "Aufderharburgh"], ["state", "South Carolina"], ["contact_id", 8], ["created_at", "2020-01-17 20:37:16.863531"], ["updated_at", "2020-01-17 20:37:16.863531"]]
+  [1m[35m (5.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["street", "4518 Gleichner Prairie"], ["city", "Gorczanyborough"], ["state", "Connecticut"], ["contact_id", 9], ["created_at", "2020-01-17 20:37:16.875053"], ["updated_at", "2020-01-17 20:37:16.875053"]]
+  [1m[36m (8.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("street", "city", "state", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["street", "709 Alla Freeway"], ["city", "Lake Ngan"], ["state", "Pennsylvania"], ["contact_id", 10], ["created_at", "2020-01-17 20:37:16.890023"], ["updated_at", "2020-01-17 20:37:16.890023"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36mContact Load (0.2ms)[0m  [1mSELECT "contacts".* FROM "contacts"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "1-898-147-6473"], ["contact_id", 1], ["created_at", "2020-01-17 20:37:16.906137"], ["updated_at", "2020-01-17 20:37:16.906137"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "1-368-890-3924"], ["contact_id", 2], ["created_at", "2020-01-17 20:37:16.927951"], ["updated_at", "2020-01-17 20:37:16.927951"]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "791.962.9403 x0240"], ["contact_id", 3], ["created_at", "2020-01-17 20:37:16.941240"], ["updated_at", "2020-01-17 20:37:16.941240"]]
+  [1m[35m (12.1ms)[0m  commit transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "981-282-7534 x172"], ["contact_id", 4], ["created_at", "2020-01-17 20:37:16.960049"], ["updated_at", "2020-01-17 20:37:16.960049"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "(559) 650-9778"], ["contact_id", 5], ["created_at", "2020-01-17 20:37:16.973689"], ["updated_at", "2020-01-17 20:37:16.973689"]]
+  [1m[35m (6.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "1-346-943-4775"], ["contact_id", 6], ["created_at", "2020-01-17 20:37:16.983426"], ["updated_at", "2020-01-17 20:37:16.983426"]]
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "113.836.3104 x257"], ["contact_id", 7], ["created_at", "2020-01-17 20:37:16.999005"], ["updated_at", "2020-01-17 20:37:16.999005"]]
+  [1m[35m (8.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "(826) 876-7249 x77136"], ["contact_id", 8], ["created_at", "2020-01-17 20:37:17.011067"], ["updated_at", "2020-01-17 20:37:17.011067"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["phone", "673.682.4445 x8923"], ["contact_id", 9], ["created_at", "2020-01-17 20:37:17.017974"], ["updated_at", "2020-01-17 20:37:17.017974"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "phones" ("phone", "contact_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["phone", "337.896.8500"], ["contact_id", 10], ["created_at", "2020-01-17 20:37:17.031548"], ["updated_at", "2020-01-17 20:37:17.031548"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
