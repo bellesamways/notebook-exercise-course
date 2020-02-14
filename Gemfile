@@ -6,6 +6,8 @@ gem 'rails', '4.2.5'
 gem 'cocoon'
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Ruby webapps
 gem 'kaminari'
+# Translations for the kaminari gem
+gem 'kaminari-i18n'
 # Centralization of locale data collection for Ruby on Rails.
 gem 'rails-i18n', '~> 4.0'
 # Use sqlite3 as the database for Active Record
