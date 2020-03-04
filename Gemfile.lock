@@ -39,6 +39,7 @@ GEM
     arel (6.0.4)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bower-rails (0.11.0)
     builder (3.2.4)
     byebug (11.0.1)
     cocoon (1.2.14)
@@ -81,6 +82,9 @@ GEM
       activerecord
       kaminari-core (= 1.2.0)
     kaminari-core (1.2.0)
+    kaminari-i18n (0.5.0)
+      kaminari
+      rails
     loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -176,6 +180,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bower-rails (~> 0.11.0)
   byebug
   cocoon
   coffee-rails (~> 4.1.0)
@@ -183,6 +188,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  kaminari-i18n
   pry-rails
   rails (= 4.2.5)
   rails-i18n (~> 4.0)

@@ -8,6 +8,8 @@ gem 'cocoon'
 gem 'kaminari'
 # Translations for the kaminari gem
 gem 'kaminari-i18n'
+# Bundler-like DSL + rake tasks for Bower on Rails
+gem "bower-rails", "~> 0.11.0"
 # Centralization of locale data collection for Ruby on Rails.
 gem 'rails-i18n', '~> 4.0'
 # Use sqlite3 as the database for Active Record
