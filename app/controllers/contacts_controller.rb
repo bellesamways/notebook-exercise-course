@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :set_options_select, only: [:new, :edit, :update, :create]
+  http_basic_authenticate_with name: 'isabelle', password: 'senha123', only: :destroy
 
   # GET /contacts
   # GET /contacts.json
