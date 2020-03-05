@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
+ruby "2.3.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-
-# dependencia gem 'bundler', '>= 1.8.4'
+gem 'bundler', '>= 1.8.4'
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
   gem 'rails-assets-bootstrap'
@@ -66,5 +66,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 1.2', '>= 1.2.2'
+  gem 'rails_12factor'
 end
