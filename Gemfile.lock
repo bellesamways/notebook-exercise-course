@@ -200,7 +200,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   kaminari-i18n
-  pg (~> 1.2, >= 1.2.2)
+  pg
   pry-rails
   rails (= 4.2.5)
   rails-assets-angular!
