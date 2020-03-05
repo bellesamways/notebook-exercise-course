@@ -20,8 +20,6 @@ gem 'kaminari-i18n'
 gem "bower-rails", "~> 0.11.0"
 # Centralization of locale data collection for Ruby on Rails.
 gem 'rails-i18n', '~> 4.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # A library for generating fake data such as names, addresses, and phone numbers.
@@ -53,6 +51,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3', '~> 1.3.0'
 end
 
 group :development do
@@ -63,4 +63,8 @@ group :development do
   gem 'spring'
   # a small gem which causes rails console to open pry
   gem 'pry-rails'
+end
+
+group :production do
+  gem 'pg'
 end
