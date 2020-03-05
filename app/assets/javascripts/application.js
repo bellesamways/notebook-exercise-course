@@ -14,4 +14,7 @@
 //= require cocoon
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
+//= require angular
+//= require leaflet
 //= require_tree .
